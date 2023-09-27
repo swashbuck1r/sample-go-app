@@ -52,7 +52,7 @@ jobs:
         run: |
           echo "debugging: $HOME"
           ls -al $HOME
-          # cat $HOME/.docker/config.json
+          cat $HOME/.docker/config.json
       - name: Push image to OCI Registry
         uses: cloudbees-io/kaniko@v1
         with:
