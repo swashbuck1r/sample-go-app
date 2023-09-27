@@ -26,9 +26,15 @@ jobs:
       - name: Log in to OCI registry
         uses: cloudbees-io/configure-oci-credentials@v0
         with:
-          registry: index.docker.io/swashbuck1
+          registry: index.docker.io
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: debug
+        uses: docker://golang:1.20
+        run: |
+          echo "debugging: $HOME"
+          ls -al $HOME
+          cat $HOME/.docker/config.json
       - name: Push image to OCI Registry
         uses: cloudbees-io/kaniko@v1
         with:
