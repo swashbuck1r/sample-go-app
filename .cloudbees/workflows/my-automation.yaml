@@ -42,12 +42,12 @@ jobs:
               }
           }
           EOF
-      - name: Log in to OCI registry
-        uses: cloudbees-io/configure-oci-credentials@v0
-        with:
-          registry: index.docker.io/v1/
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      # - name: Log in to OCI registry
+      #   uses: cloudbees-io/configure-oci-credentials@v0
+      #   with:
+      #     registry: index.docker.io/v1/
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push image to OCI Registry
         uses: cloudbees-io/kaniko@v1
         with:
