@@ -50,7 +50,6 @@ jobs:
               }
           }
           EOF
-          cat $CLOUDBEES_OUTPUTS/dockerconfigjson
       - name: debug
         uses: docker://golang:1.20
         run: |
