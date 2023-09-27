@@ -27,7 +27,7 @@ jobs:
         uses: cloudbees-io/configure-oci-credentials@v0
         with:
           registry: index.docker.io/swashbuck1r/sample-go-app
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push image to OCI Registry
         uses: cloudbees-io/kaniko@v1
