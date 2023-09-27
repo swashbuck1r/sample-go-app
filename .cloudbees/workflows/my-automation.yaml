@@ -34,7 +34,7 @@ jobs:
           cat << EOF > "$CLOUDBEES_OUTPUTS/dockerconfigjson"
           {
               "auths": {
-                  "https://index.docker.io/v1/": {
+                  "https://index.docker.io/v2/": {
                       "username": "${DOCKER_USERNAME}"",
                       "password": "${DOCKER_PASSWORD}",
                       "auth": "${AUTH}"
