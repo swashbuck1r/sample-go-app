@@ -23,31 +23,6 @@ jobs:
         uses: docker://golang:1.20
         run: |
           go test -v ./...
-      # - name: docker login
-      #   id: docker-login-step
-      #   uses: docker://alpine:3.17
-      #   env:
-      #     DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      #     DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-      #   run: |
-      #     AUTH=$(echo -n "${DOCKER_USERNAME}:${DOCKER_PASSWORD}" | base64)
-      #     cat << EOF > "$CLOUDBEES_OUTPUTS/dockerconfigjson"
-      #     {
-      #         "auths": {
-      #             "https://index.docker.io/v2": {
-      #                 "username": "${DOCKER_USERNAME}"",
-      #                 "password": "${DOCKER_PASSWORD}",
-      #                 "auth": "${AUTH}"
-      #             },
-      #             "https://index.docker.io/v1": {
-      #                 "username": "${DOCKER_USERNAME}"",
-      #                 "password": "${DOCKER_PASSWORD}",
-      #                 "auth": "${AUTH}"
-      #             }
-      #         }
-      #     }
-      #     EOF
-      #     cat $CLOUDBEES_OUTPUTS/dockerconfigjson
       - name: Log in to OCI registry
         uses: cloudbees-io/configure-oci-credentials@v0
         with:
@@ -57,6 +32,6 @@ jobs:
       - name: Push image to OCI Registry
         uses: cloudbees-io/kaniko@v1
         with:
-          destination: index.docker.io/swashbuck1r/sample-go-app:1.0.2
+          destination: index.docker.io/swashbuck1r/sample-go-app:1.0.3
 
   
