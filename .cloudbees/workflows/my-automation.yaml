@@ -26,7 +26,7 @@ jobs:
       - name: Log in to OCI registry
         uses: cloudbees-io/configure-oci-credentials@v0
         with:
-          registry: index.docker.io
+          registry: index.docker.io/v2/swashbuck1r
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: debug
