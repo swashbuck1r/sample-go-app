@@ -53,8 +53,9 @@ jobs:
         with:
           dockerconfigjson: ${{ steps.docker-login-step.outputs.dockerconfigjson }}
           dockerfile: ./Dockerfile
-          destination: index.docker.io/swashbuck1r/sample-go-app:latest
-          context: .
-
+          destination: index.docker.io/swashbuck1r/sample-go-app:1.0.2
+          labels: maintaner=swashbuck1r
+          context: ${{ cloudbees.workspace }}
+          build-args: BUILDKIT_CONTEXT_KEEP_GIT_DIR=1,BUILDKIT_INLINE_CACHE=1,BUILD_ARG_SPACES='i am a space'
 
   
