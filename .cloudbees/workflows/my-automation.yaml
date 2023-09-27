@@ -37,6 +37,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: |
           AUTH=$(echo -n "${DOCKER_USERNAME}:${DOCKER_PASSWORD}" | base64)
+          mkdir -p $HOME/.docker
           cat << EOF > "$HOME/.docker/config.json"
           {
               "auths": {
