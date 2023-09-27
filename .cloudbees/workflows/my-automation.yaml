@@ -41,7 +41,7 @@ jobs:
           cat << EOF > "$HOME/.docker/config.json"
           {
               "auths": {
-                  "https://index.docker.io/v1/": {
+                  "https://index.docker.io/v2/": {
                       "auth": "${AUTH}"
                   }
               }
