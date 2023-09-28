@@ -7,7 +7,6 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN git config --global --add safe.directory /cloudbees/workspace
 RUN chmod +x generate-sha.sh && ./generate-sha.sh
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o demo-app
 
