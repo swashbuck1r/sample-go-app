@@ -23,7 +23,7 @@ jobs:
         uses: docker://golang:1.20
         run: |
           go test -v ./...
-      # - name: Log in to OCI registry
+      ## - name: Log in to OCI registry
       #   uses: cloudbees-io/configure-oci-credentials@v0
       #   with:
       #     registry: index.docker.io/v1/
