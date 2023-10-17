@@ -51,5 +51,5 @@ jobs:
       - name: Push image to OCI Registry
         uses: cloudbees-io/kaniko@v1
         with:
-          destination: ${{ vars.DOCKERHUB_USERNAME }}/sample-go-app:1.0.4
+          destination: ${{ vars.DOCKERHUB_USERNAME }}/sample-go-app:1.0.5
   
