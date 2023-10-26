@@ -30,26 +30,34 @@ jobs:
       #     registry: index.docker.io/v1/
       #     username: ${{ vars.DOCKERHUB_USERNAME }}
       #     password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: docker login
-        id: docker-login-step
-        uses: docker://alpine:3.17
-        env:
-          DOCKER_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-        run: |
-          AUTH=$(echo -n "${DOCKER_USERNAME}:${DOCKER_PASSWORD}" | base64)
-          mkdir -p $HOME/.docker
-          cat << EOF > "$HOME/.docker/config.json"
-          {
-              "auths": {
-                  "https://index.docker.io/v1/": {
-                      "auth": "${AUTH}"
-                  }
-              }
-          }
-          EOF
-      - name: Push image to OCI Registry
+      # - name: docker login
+      #   id: docker-login-step
+      #   uses: docker://alpine:3.17
+      #   env:
+      #     DOCKER_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
+      #     DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      #   run: |
+      #     AUTH=$(echo -n "${DOCKER_USERNAME}:${DOCKER_PASSWORD}" | base64)
+      #     mkdir -p $HOME/.docker
+      #     cat << EOF > "$HOME/.docker/config.json"
+      #     {
+      #         "auths": {
+      #             "https://index.docker.io/v1/": {
+      #                 "auth": "${AUTH}"
+      #             }
+      #         }
+      #     }
+      #     EOF
+
+      - name: Login to dockerhub
+        uses: cloudbees-io/configure-oci-credentials@v0
+        with:
+          registry: index.docker.io # or docker.io
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          
+      - name: Push image to the configured OCI Registry
         uses: cloudbees-io/kaniko@v1
         with:
           destination: ${{ vars.DOCKERHUB_USERNAME }}/sample-go-app:1.0.4
-  
+
