@@ -52,7 +52,7 @@ jobs:
       - name: Login to dockerhub
         uses: cloudbees-io/configure-oci-credentials@v0
         with:
-          registry: index.docker.io # or docker.io
+          registry: docker.io # or docker.io
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           
