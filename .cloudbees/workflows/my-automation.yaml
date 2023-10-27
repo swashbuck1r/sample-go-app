@@ -50,7 +50,7 @@ jobs:
       #     EOF
 
       - name: Login to dockerhub
-        uses: cloudbees-io/configure-oci-credentials@v0
+        uses: cloudbees-io/configure-oci-credentials@v1
         with:
           registry: docker.io # or docker.io
           username: ${{ vars.DOCKERHUB_USERNAME }}
