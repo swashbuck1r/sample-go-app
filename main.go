@@ -17,7 +17,7 @@ func main() {
 	router := gin.Default()
 	router.LoadHTMLGlob("templates/*")
 
-	router.GET("/", func(c *gin.Context) {
+	router.GET("/*", func(c *gin.Context) {
 		sha := getCommitSha()
 		color := getColor(sha)
 		textColor := getTextColor(color)
@@ -27,6 +27,7 @@ func main() {
 			"color":       color,
 			"textColor":   textColor,
 			"environment": environment,
+			"path":        c.Request.URL.Path,
 		})
 	})
 
