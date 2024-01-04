@@ -23,7 +23,7 @@ jobs:
       - name: Run tests
         uses: docker://golang:1.20
         run: |
-          echo "running tests 2"
+          echo "running tests 3"
           go test -v ./...
       - name: Setup Dockerhub container registry
         uses: cloudbees-io/configure-oci-credentials@v1
